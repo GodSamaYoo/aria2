@@ -37,16 +37,10 @@ jobs:
       run: |
         ./configure \
           CPPFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address"
-    - name: Configure autotools (macOS)
-      if: runner.os == 'macOS'
-      run: |
-        ./configure \
-          --without-openssl --without-gnutls --with-appletls \
-          --disable-nls \
-          CPPFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address"
     - name: Build aria2
       run: |
         make
+        strip -S aria2
         make check
     - name: Upload binary files
       uses: actions/upload-artifact@v2
