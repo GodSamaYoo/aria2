@@ -40,10 +40,10 @@ jobs:
     - name: Build aria2
       run: |
         make
-        strip -S aria2
+        strip -S aria2c
         make check
     - name: Upload binary files
       uses: actions/upload-artifact@v2
       with:
-        name: aria2
-        path: aria2
+        name: aria2c
+        path: aria2c
