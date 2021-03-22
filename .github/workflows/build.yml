@@ -39,7 +39,8 @@ jobs:
           CPPFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address"
     - name: Build aria2
       run: |
-        make
+        make -j6
+        cd src
         strip -S aria2c
         make check
     - name: Upload binary files
